@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Flash URL
 // @namespace    https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
-// @version      1.0.4
+// @version      1.0.5
 // @updateURL    https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
 // @downloadURL  https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
 // @description  显示网页中的Flash链接
@@ -26,7 +26,7 @@ function ShowFlashURL_StandarizeURL(str){
         if(param!=undefined&&param!=""){
             linkText.innerText=linkText.href=ShowFlashURL_StandarizeURL(param);
             console.log("发现Flash资源(ActiveX)：["+i+"]"+linkText);
-            flashObjs[i].parentElement.append(divLink);
+            flashObjs[i].insertAdjacentElement("afterend",divLink);
         }
     }
     //Non-IE case
@@ -40,7 +40,7 @@ function ShowFlashURL_StandarizeURL(str){
             if(param!=undefined&&param!=""){
                 linkText.innerText=linkText.href=ShowFlashURL_StandarizeURL(param);
                 console.log("发现Flash资源(Plugin)：["+i+"]"+linkText);
-                flashObjs[i].parentElement.append(divLink);
+                flashObjs[i].insertAdjacentElement("afterend",divLink);
             }
         }
     }
