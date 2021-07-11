@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Flash URL
 // @namespace    https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
-// @version      1.0
+// @version      1.0.1
 // @updateURL    https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
 // @downloadURL  https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
 // @description  显示网页中的Flash链接
@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 function ShowFlashURL_StandarizeURL(str){
-    return new URL(str).href;
+    return new URL(str,location.href).href;
 }
 
 function ShowFlashURL_GetURL(objDom){
