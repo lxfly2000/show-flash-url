@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Flash URL
 // @namespace    https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
-// @version      1.0.7
+// @version      1.0.8
 // @updateURL    https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
 // @downloadURL  https://github.com/lxfly2000/show-flash-url/raw/master/show-flash-url.user.js
 // @description  显示网页中的Flash链接
@@ -26,6 +26,9 @@ function ShowFlashURL_StandarizeURL(str){
         var linkText=document.createElement("a");
         divLink.append(linkText);
         var param=flashObjs[i].querySelector("param[name=movie i]").value;
+        if(param==undefined||param==null||param==""){
+            param=flashObjs[i].src;
+        }
         if(param!=undefined&&param!=""){
             linkText.innerText=linkText.href=ShowFlashURL_StandarizeURL(param);
             console.log("发现Flash资源(ActiveX)：["+i+"]"+linkText);
@@ -43,6 +46,9 @@ function ShowFlashURL_StandarizeURL(str){
             linkText=document.createElement("a");
             divLink.append(linkText);
             param=flashObjs[i].data;
+            if(param==undefined||param==null||param==""){
+                param=flashObjs[i].src;
+            }
             if(param!=undefined&&param!=""){
                 linkText.innerText=linkText.href=ShowFlashURL_StandarizeURL(param);
                 console.log("发现Flash资源(Plugin)：["+i+"]"+linkText);
